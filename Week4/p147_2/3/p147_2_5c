@@ -1,0 +1,17 @@
+#include "3.hpp"
+
+std::string reverse(std::string s)
+{
+    reverse(s.begin(), s.end());
+    return s;
+}
+
+int main()
+{
+    std::string s;
+    std::cout << "number";
+    std::cin >> s;
+
+    std::cout << "revers:";
+    std::cout << reverse(s) << std::endl;
+}
