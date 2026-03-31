@@ -1,36 +1,34 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-void printMap(int map[5][5]);
+void randomMap(int map[5][5]) {
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            map[i][j] = rand() % 2;
+        }
+    }
+}
 
-int main()
-{
-    int map[5][5] =
-    {
-        {1,0,1,0,1},
-        {0,1,0,1,0},
-        {1,0,1,0,1},
-        {0,1,0,1,0},
-        {1,0,1,0,1}
-    };
+// (2) 체커보드를 보기 좋게 화면에 출력하는 함수
+void printMap(int map[5][5]) {
+    printf("현재 맵 상태:\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%2d ", map[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
 
+int main() {
+    srand(time(NULL));
+    int map[5][5];
+
+    printf("--- 2단계: 생성 및 출력 ---\n");
+    randomMap(map);
     printMap(map);
 
     return 0;
-}
-
-void printMap(int map[5][5])
-{
-    cout << "   0 1 2 3 4" << endl;   // 제목(열 번호)
-
-    for(int i=0;i<5;i++)
-    {
-        cout << i << "  ";          // 행 번호 출력
-
-        for(int j=0;j<5;j++)
-        {
-            cout << map[i][j] << " ";
-        }
-        cout << endl;
-    }
 }
