@@ -1,5 +1,5 @@
 #include <iostream>
-#include "147p_2-5.h"
+#include "147p_2_5.h"
 using namespace std;
 
 int main()
