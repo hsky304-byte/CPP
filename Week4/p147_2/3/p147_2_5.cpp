@@ -1,4 +1,4 @@
-#include "147p_2_5.h"
+#include "P147_2_5.h"
 
 int reverse(int n)
 {
