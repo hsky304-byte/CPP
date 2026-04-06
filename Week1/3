@@ -1,0 +1,52 @@
+#include <iostream>
+
+struct MyTime {
+    int h, m, s, ms;
+};
+
+// 방법 1: 값 반환 (Return by Value)
+MyTime addTime(MyTime t1, MyTime t2) {
+    MyTime res;
+    int carry = 0;
+
+    res.ms = (t1.ms + t2.ms) % 1000;
+    carry = (t1.ms + t2.ms) / 1000;
+
+    res.s = (t1.s + t2.s + carry) % 60;
+    carry = (t1.s + t2.s + carry) / 60;
+
+    res.m = (t1.m + t2.m + carry) % 60;
+    carry = (t1.m + t2.m + carry) / 60;
+
+    res.h = t1.h + t2.h + carry;
+    return res;
+}
+
+// 방법 2: 참조 전달 (Pass by Reference)
+void addTime(MyTime t1, MyTime t2, MyTime& t3) {
+    t3 = addTime(t1, t2); // 방법 1을 재활용
+}
+
+// 방법 3: 포인터 전달 (Pass by Pointer)
+void addTime(MyTime t1, MyTime t2, MyTime* pt) {
+    if (pt != nullptr) {
+        *pt = addTime(t1, t2);
+    }
+}
+
+int main() {
+    MyTime t1 = {1, 50, 30, 600};
+    MyTime t2 = {0, 20, 40, 500};
+    MyTime result;
+
+    // 방법 1 사용
+    result = addTime(t1, t2);
+    
+    // 방법 2 사용
+    addTime(t1, t2, result);
+    
+    // 방법 3 사용
+    addTime(t1, t2, &result);
+
+    return 0;
+}
